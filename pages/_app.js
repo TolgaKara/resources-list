@@ -1,6 +1,5 @@
 import '../styles/globals.css';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
-import { createClient } from '../src/lib/firebaseConfig';
 import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {

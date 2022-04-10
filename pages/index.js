@@ -9,7 +9,11 @@ import { webDropdownItems } from '../src/data/web-development';
 import styles from '../styles/Home.module.css';
 import { loadDB } from '../src/lib/firebaseConfig';
 
-export default function Home() {
+import { app, db } from '../src/lib/firebaseConfig';
+import { collection, addDoc, getDoc } from 'firebase/firestore';
+
+export default function Home({ resources }) {
+	console.log(resources);
 	return (
 		<Container>
 			<div className='pb-2 border-b-4 border-green-300 w-fit flex gap-4 flex-col items-center justify-center mx-auto md:flex-row'>
@@ -27,7 +31,12 @@ export default function Home() {
 	);
 }
 
-// export async function getStaticProps() {
-// 	const posts = (await getPosts()) || [];
-// 	return { props: { posts } };
-// }
+export async function getStaticProps() {
+	const dbInstance = collection(db, 'resources');
+	console.log(dbInstance);
+	return {
+		props: {
+			resources: await JSON.stringify(dbInstance),
+		},
+	};
+}
