@@ -1,7 +1,18 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { createClient } from '../src/lib/firebaseConfig';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+	const [queryClient] = useState(() => new QueryClient());
+
+	return (
+		<QueryClientProvider client={queryClient}>
+			<Hydrate state={pageProps.dehydratedState}>
+				<Component {...pageProps} />
+			</Hydrate>
+		</QueryClientProvider>
+	);
 }
 
-export default MyApp
+export default MyApp;

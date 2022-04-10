@@ -7,6 +7,7 @@ import { Icons } from '../src/components/Icons';
 import { businessDropdownItems } from '../src/data/business';
 import { webDropdownItems } from '../src/data/web-development';
 import styles from '../styles/Home.module.css';
+import { loadDB } from '../src/lib/firebaseConfig';
 
 export default function Home() {
 	return (
@@ -25,3 +26,8 @@ export default function Home() {
 		</Container>
 	);
 }
+
+// export async function getStaticProps() {
+// 	const posts = (await getPosts()) || [];
+// 	return { props: { posts } };
+// }
