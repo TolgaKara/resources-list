@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Gradient = ({ isText }) => {
+export const Gradient = ({ children, isText }) => {
 	return (
 		<div
 			className={
@@ -9,7 +9,7 @@ export const Gradient = ({ isText }) => {
 					: 'bg-gradient-to-r from-lime-500 to-green-500 inline px-2'
 			}
 		>
-			Gradient
+			{children}
 		</div>
 	);
 };
